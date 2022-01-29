@@ -11,6 +11,9 @@ typedef struct node {
       char word[];
 }NODE;
 NODE *head = NULL;
+
+// To add the unique word into growing linked list 
+// and add the unique word count.
 void allocate_buffer(char *ptr, int charac_count)
 {
   
@@ -50,9 +53,9 @@ void print_word_and_count()
 }
 void main()
 {
- char read_line[] = "hello i am birendra \n"
-                     "good people birendra \n"
-		     "hello rakhi";
+ char read_line[] = "hello I am Birendra \n"
+                     "good people \n"
+		     "good work is hello";
  char *ptr = read_line;
  int i=0, count_word=0, line=0;
  static int count_char_in_word=0;
@@ -60,7 +63,6 @@ void main()
  bool end_line = FALSE;
  while(*ptr != '\0')
  {
-  //printf ("%c\n", *ptr);
   if(*ptr == ' ' || (*ptr == '\n'))
   {
     if(*ptr == '\n')
@@ -83,22 +85,35 @@ void main()
     
   }
  }
-  char *str_wrd = ptr - (count_char_in_word );
-  allocate_buffer(str_wrd, count_char_in_word);
- printf("\nwords in para:%d", ++count_word);
- printf("\nNumber of line:%d", ++line);
+ char *str_wrd = ptr - (count_char_in_word );
+ allocate_buffer(str_wrd, count_char_in_word);
+ printf("\nwords in para:%d", ++count_word); // increment to add last word, as while loop will exit '\0'
+ printf("\nNumber of line:%d", ++line); // increment to add last line
  print_word_and_count();
 }
+
 #if 0
-void main()
-{
-  int i=0;
-  char read_line[] ="hello this is birendra";
-  //char *ptr=read_line;
-  printf("\n enter the line to be read:\n");
-  //scanf("%s",read_line);
-  printf("%s",read_line);
-  i = count_word_api(read_line);
-  printf("word count: %d", i);
-}
+Test Result
+ ==============================
+ 5
+ I 1
+ am 2
+ Birendra 8
+ good 4
+ people 6
+ work 4
+ is 2
+
+ words in para:10
+ Number of line:3
+ word: is & count : 1
+ word: work & count : 1
+ word: people & count : 1
+ word: good & count : 2
+ word: Birendra & count : 1
+ word: am & count : 1
+ word: I & count : 1
+ word: hello & count : 2 
+ ==============================
+>>>>>>> cleanup of code
 #endif
